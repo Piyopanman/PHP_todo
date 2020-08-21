@@ -18,16 +18,9 @@
     $dbh=new PDO($dsn,$user,$password);
     $dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
-
-    // $sql='select LAST_INSERT_ID()';
-    // $stmt=$dbh->prepare($sql);
-    // $stmt->execute();
-    // $rec=$stmt->fetch(PDO::FETCH_ASSOC);
-    // $lastcode=$rec['LAST_INSERT_ID()'];
-
-      $sql='select code,name from todo where 1';
-      $stmt=$dbh->prepare($sql);
-      $stmt->execute();
+    $sql='select code,name from todo where 1';
+    $stmt=$dbh->prepare($sql);
+    $stmt->execute();
 
       // while(true){
       //   $rec=$stmt->fetch(PDO::FETCH_ASSOC);
@@ -49,35 +42,31 @@
   ?>
 
 
-  <h1>買い物リスト</h1>
+  <h1>todoリスト</h1>
 
-  <!-- <form class="" action="todo_branch.php" method="post">
+  <form class="" action="todo_branch.php" method="post">
     <ul>
       <?php while(true): ?>
         <?php $rec=$stmt->fetch(PDO::FETCH_ASSOC) ?>
         <?php if($rec==false): ?>
           <?php break; ?>
         <?php endif ?>
-        <li><?php echo $rec['name'] ?></li>
-        <input type="radio" name="todo_code" value="<?php echo $rec['code'] ?>">
-        <input type="submit" name="edit" value="編集">
-        <input type="submit" name="delete" value="削除">
+        <li>
+          <input type="hidden" name="todo_code" value="<?php echo $rec['code'] ?>">
+          <?php echo $rec['name'] ?>
+          <a href="todo_edit.php?code=<?php echo $rec['code'] ?>">　編集  </a>
+          <a href="todo_delete.php?code=<?php echo $rec['code'] ?>">　削除　</a>
+          <!-- <input type="submit" name="edit" value="編集">
+          <input type="submit" name="delete" value="削除"> -->
+        </li>
         <br><br>
       <?php endwhile ?>
     </ul>
     <br>
-    <a href="todo_add.php">追加</a>
-  </form> -->
+    <a href="todo_add.php">追加</a><br>
+  </form>
 
   <br><br><br>
-  <?php
-  $rec=$stmt->fetch(PDO::FETCH_ASSOC);
-  echo $rec['code'];
-  ?>
-
-  <?php foreach ($todo_code as $val): ?>
-  <?php echo $val['code']; ?>
-  <?php endforeach ?>
 
 
   </body>

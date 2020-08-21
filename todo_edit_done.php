@@ -1,44 +1,40 @@
-<?php
-
-//追加
-if(isset($_POST['add'])==true){
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+  <?php
   try {
-    $add_name=$_POST['add_name'];
+    $name=$_POST['todo_name'];
+    $code=$_POST['code'];
+
     $dsn='mysql:dbname=test01;host=localhost;charset=utf8';
     $user='root';
     $password='';
     $dbh=new PDO($dsn,$user,$password);
     $dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
-    $sql='insert into todo(name) values(?)';
+    $sql='update todo set name=? where code=?';
     $stmt=$dbh->prepare($sql);
-    $data[]=$add_name;
+    $data[]=$name;
+    $data[]=$code;
     $stmt->execute($data);
 
-    $dbh=null;
+    $stmt=null;
 
     header('Location:todo.php');
+    exit();
+
 
   } catch (\Exception $e) {
-    print '障害発生中';
+    print 'sorry';
     exit();
   }
-}
 
 
-//編集
-if(isset($_POST['edit'])==true){
-  try {
-    $todo_code=$_POST['todo_code'];
-    echo $todo_code;
+  ?>
 
-
-
-  } catch (\Exception $e) {
-
-  }
-
-}
-
-
-?>
+  </body>
+</html>
