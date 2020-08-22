@@ -1,7 +1,5 @@
 <?php
 
-//追加
-if(isset($_POST['add'])==true){
   try {
     $add_name=$_POST['add_name'];
     $dsn='mysql:dbname=test01;host=localhost;charset=utf8';
@@ -18,27 +16,11 @@ if(isset($_POST['add'])==true){
     $dbh=null;
 
     header('Location:todo.php');
+    exit();
 
   } catch (\Exception $e) {
     print '障害発生中';
     exit();
   }
-}
-
-
-//編集
-if(isset($_POST['edit'])==true){
-  try {
-    $todo_code=$_POST['todo_code'];
-    echo $todo_code;
-
-
-
-  } catch (\Exception $e) {
-
-  }
-
-}
-
 
 ?>

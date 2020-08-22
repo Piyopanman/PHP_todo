@@ -4,7 +4,8 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <link rel="stylesheet" href="stylesheet.css">
+  <title>todo_edit</title>
   </head>
   <body>
     <?php
@@ -34,15 +35,24 @@
 
     ?>
 
-    <h1>編集</h1>
-    <form class="" action="todo_edit_done.php" method="post">
-      <input type="text" name="todo_name" value="<?php echo $todo_name ?>">
+    <div class="container">
 
-      <input type="hidden" name="code" value="<?php echo $code ?>">
+      <h1>項目の編集</h1>
+      <div class="todo_container">
+        
+        <form class="" action="todo_edit_done.php" method="post">
+          <input type="text" name="todo_name" value="<?php echo $todo_name ?>">
 
-      <input type="submit" name="" value="OK"> <br>
-      <input type="button" name="" value="戻る" onclick="history.back()">
-    </form>
+          <input type="hidden" name="code" value="<?php echo $code ?>">
+
+          <input type="submit" name="" value="OK"> <br>
+          <input type="button" name="" value="戻る" onclick="history.back()">
+        </form>
+
+      </div>
+
+    </div>
+
 
 
   </body>

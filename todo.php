@@ -1,13 +1,14 @@
 <!--
 (追加)post:なし
-(編集)post:todo_code,edit
-(削除)post:todo_code,delete -->
+(編集)get:code
+(削除)get:code -->
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <link rel="stylesheet" href="stylesheet.css">
+    <title>todo</title>
   </head>
   <body>
   <?php
@@ -41,8 +42,10 @@
   }
   ?>
 
+<div class="container">
 
   <h1>todoリスト</h1>
+<div class="todo_main_container">
 
   <form class="" action="todo_branch.php" method="post">
     <ul>
@@ -52,22 +55,25 @@
           <?php break; ?>
         <?php endif ?>
         <li>
-          <input type="hidden" name="todo_code" value="<?php echo $rec['code'] ?>">
-          <?php echo $rec['name'] ?>
-          <a href="todo_edit.php?code=<?php echo $rec['code'] ?>">　編集  </a>
-          <a href="todo_delete.php?code=<?php echo $rec['code'] ?>">　削除　</a>
-          <!-- <input type="submit" name="edit" value="編集">
-          <input type="submit" name="delete" value="削除"> -->
+          <div class="todo_item">
+            <?php echo $rec['name'] ?>
+          </div>
+          <div class="todo_edit">
+            <a href="todo_edit.php?code=<?php echo $rec['code'] ?>">編集</a>
+          </div>
+          <div class="todo_delete">
+            <a href="todo_delete.php?code=<?php echo $rec['code'] ?>">削除</a>
+          </div>
+
         </li>
-        <br><br>
       <?php endwhile ?>
     </ul>
-    <br>
-    <a href="todo_add.php">追加</a><br>
+    <a href="todo_add.html" class="new_button">新規登録</a>
   </form>
 
-  <br><br><br>
+</div>
 
+</div>
 
   </body>
 </html>
